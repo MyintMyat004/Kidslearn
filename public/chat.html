@@ -310,11 +310,11 @@
       color: white;
     }
 
-    .active {
+    /* .active {
       background-color: #ffd566;
       color: #333;
       box-shadow: 0 4px 14px rgba(255, 213, 102, 0.5);
-    }
+    } */
 
     /* ================= NAVIGATION ================= */
     .site-nav {
@@ -429,6 +429,20 @@
         width: 70%;
       }
     }
+
+    /* ================= REVEAL ANIMATION ================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  visibility: hidden;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  visibility: visible;
+}
   </style>
 </head>
 
@@ -460,20 +474,20 @@
     </nav>
   </header>
 
-  <div class="site-nav__search" style="margin: 10px;">
+  <div class="site-nav__search reveal" style="margin: 10px;">
     <input type="text" id="searchInput" placeholder="အသုံးပြုသူ ရှာရန်...">
     <button><i class="fas fa-search" style="padding: 5px;"></i></button>
   </div>
 
 
-  <div class="current-user" id="currentUser" style="text-align: center; margin-top: 10px;">
+  <div class="current-user reveal" id="currentUser" style="text-align: center; margin-top: 10px;">
     <a href="profile.html" id="profileLink">👋 ဟယ်လို၊ အသုံးပြုသူ <i class="fas fa-user-circle"
         style="margin-left:5px;"></i></a>
   </div>
 
-  <h2 style="margin-top: -10px; font-size: 1.8rem; text-align: left; margin-left: 20px;">အသုံးပြုသူများ</h2>
+  <h2 style="margin-top: -10px; font-size: 1.8rem; text-align: left; margin-left: 20px;" class="reveal">အသုံးပြုသူများ</h2>
 
-  <div class="user-grid" id="userList"></div>
+  <div class="user-grid reveal" id="userList"></div>
 
   <script>
     function showCustomMessage(message) {
@@ -596,6 +610,22 @@
 
     fetchCurrentUser();
     fetchUsers();
+
+    const cards = document.querySelectorAll('.reveal');
+
+  const observerOptions = { threshold: 0.15 };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');  // show when in view
+      } else {
+        entry.target.classList.remove('active'); // hide when out of view
+      }
+    });
+  }, observerOptions);
+
+  cards.forEach(card => observer.observe(card));
   </script>
 
 </body>

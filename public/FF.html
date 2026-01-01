@@ -580,6 +580,21 @@
         gap: 18px;
       }
     }
+
+    /* ================= REVEAL ANIMATION ================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  visibility: hidden;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  visibility: visible;
+}
+    
   </style>
 </head>
 
@@ -1401,6 +1416,23 @@
         }
       }
     }
+
+    const revealBoxes = document.querySelectorAll('.reveal');
+
+const observerOptions = { threshold: 0.15 };
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');  // show when in view
+    } else {
+      entry.target.classList.remove('active'); // hide when out of view
+    }
+  });
+}, observerOptions);
+
+revealBoxes.forEach(box => observer.observe(box));
+
   </script>
 </body>
 

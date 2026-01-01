@@ -20,7 +20,7 @@
             font-family: 'Fredoka', sans-serif;
             /* background: linear-gradient(135deg, #a1c4fd, #c2e9fb); */
             background-color: #F7FAFF;
-            height: 100vh;
+            /* height: 100vh; */
             color: #333;
             overflow-x: hidden;
         }
@@ -920,6 +920,20 @@
             transform: scale(0.98);
         }
 
+        /* ================= REVEAL ANIMATION ================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  visibility: hidden;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  visibility: visible;
+}
+
     </style>
 </head>
 
@@ -951,7 +965,7 @@
     <section id="home">
         <div class="card-grid">
             <!-- Numbers Card -->
-            <div class="learn-card">
+            <div class="learn-card reveal" style="transition-delay: 0.1s;">
                 <img src="numbers.jpg" alt="Numbers" class="card-img">
                 <div class="card-info">
                     <h3>🔢 ဂဏန်းများ</h3>
@@ -961,7 +975,7 @@
             </div>
 
             <!-- Math Operations Card -->
-            <div class="learn-card">
+            <div class="learn-card reveal" style="transition-delay: 0.1s;">
                 <img src="math.jpg" alt="Math Operations" class="card-img">
                 <div class="card-info">
                     <h3>🧮 ပေါင်း • နုတ် • မြှောက် • စား</h3>
@@ -971,7 +985,7 @@
             </div>
 
             <!-- Shapes Card -->
-            <div class="learn-card">
+            <div class="learn-card reveal" style="transition-delay: 0.1s;">
                 <img src="shapes.jpg" alt="Shapes" class="card-img">
                 <div class="card-info">
                     <h3>🔺 ပုံသဏ္ဍာန်များ</h3>
@@ -981,7 +995,7 @@
             </div>
 
             <!-- Patterns Card -->
-            <div class="learn-card">
+            <div class="learn-card reveal" style="transition-delay: 0.2s;">
                 <img src="pattern.jpg" alt="Patterns" class="card-img">
                 <div class="card-info">
                     <h3>🎨 Pattern များ</h3>
@@ -991,7 +1005,7 @@
             </div>
 
             <!-- Time Card -->
-            <div class="learn-card">
+            <div class="learn-card reveal" style="transition-delay: 0.2s;">
                 <img src="time.jpg" alt="Time" class="card-img">
                 <div class="card-info">
                     <h3>⏰ အချိန်</h3>
@@ -1001,7 +1015,7 @@
             </div>
 
             <!-- Money Card -->
-            <div class="learn-card">
+            <div class="learn-card reveal" style="transition-delay: 0.2s;">
                 <img src="money.jpg" alt="Money" class="card-img">
                 <div class="card-info">
                     <h3>💰 ငွေကြေး</h3>
@@ -1011,13 +1025,13 @@
             </div>
         </div>
 
-        <div class="result-btn-wrapper">
+        <div class="result-btn-wrapper reveal" style="transition-delay: 0.3s;">
             <button class="result-btn" onclick="showResults()">ရလဒ်များကြည့်ရန်</button>
         </div>
     </section>
 
     <!-- Numbers Section -->
-    <section id="numbers" class="hidden">
+    <section id="numbers" class="hidden reveal">
         <div id="numbersLearning" class="lesson-section">
             <p id="numbersLearnText">ကဲ... ကလေးတို့ရေ ၁ မှ ၂၀ အထိရေတွက်တာကို လေ့လာကြရအောင်။</p>
             <div class="slideshow-container">
@@ -1041,7 +1055,7 @@
                 <button onclick="goHome()" id="backToHomeBtn1">🏠 မူလနေရာသို့</button>
             </div>
         </div>
-        <div id="numbersQuiz" class="hidden quiz-area">
+        <div id="numbersQuiz" class="hidden quiz-area reveal">
             <h2 id="countObjectsTitle">အသီးများကို ရေတွက်ပါ။ </h2>
             <div class="quiz-progress" id="numberQuizProgress">မေးခွန်း ၁ မှ ၁၀</div>
             <div class="progress-bar">
@@ -1065,8 +1079,8 @@
         </div>
     </section>
     <!-- Math Operations Section -->
-    <section id="math-operations" class="hidden">
-        <div id="mathOperationsLearning" class="lesson-section">
+    <section id="math-operations" class="hidden reveal">
+        <div id="mathOperationsLearning" class="lesson-section reveal">
             <p id="mathOpsLearnText">ကဲ... ကလေးတို့ရေ ပေါင်းခြင်း၊ နုတ်ခြင်း၊ မြှောက်ခြင်းနှင့် စားခြင်းတွေကို
                 လေ့လာကြရအောင်။</p>
             <div class="math-tabs">
@@ -1353,7 +1367,7 @@
                 </div>
             </div>
         </div>
-        <div id="mathOperationsQuiz" class="hidden quiz-area">
+        <div id="mathOperationsQuiz" class="hidden quiz-area reveal">
             <h2 id="mathQuizTitle">🧮 သင်္ချာပုစ္ဆာကို ဖြေရှင်းပါ!</h2>
             <div class="quiz-progress" id="mathQuizProgress">မေးခွန်း ၁ မှ ၁၀</div>
             <div class="progress-bar">
@@ -1362,7 +1376,7 @@
             <p id="mathEquation" style="font-size: 32px; font-weight: bold; text-align: center; margin: 20px 0;"></p>
             <div class="quiz-options" id="math-options"></div>
         </div>
-        <div class="quiz-navigation-bottom hidden" id="mathOperationsQuizNavigation">
+        <div class="quiz-navigation-bottom hidden reveal" id="mathOperationsQuizNavigation">
             <button onclick="showSection('math-operations')" id="backToLearningBtn2"> သင်ခန်းစာသို့</button>
             <button id="mathPrevBtn" class="prev-btn" onclick="previousMathQuestion()" style="display: none;"
                 id="prevMathBtnText">← ရှေ့သို့</button>
@@ -1370,15 +1384,15 @@
                 →</button>
             <button onclick="goHome()" id="backToHomeBtn8">🏠 မူလနေရာသို့</button>
         </div>
-        <div id="mathQuizResult" class="quiz-result">
+        <div id="mathQuizResult" class="quiz-result reveal">
             <p id="mathResultText"></p>
             <div id="mathAnswerReview" class="answer-review"></div>
             <button onclick="goHome()" id="backToHomeBtn9">🏠 မူလနေရာသို့</button>
         </div>
     </section>
     <!-- Shapes Section -->
-    <section id="shapes" class="hidden">
-        <div id="shapesLearning" class="lesson-section">
+    <section id="shapes" class="hidden reveal">
+        <div id="shapesLearning" class="lesson-section reveal">
             <p id="shapesLearnText">ကဲ... ကလေးတို့ရေ ပုံသဏ္ဍာန်လေးတွေကိုလေ့လာကြရအောင်။</p>
             <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));">
                 <div class="card" style="height: auto; padding: 10px;" onclick="showSection('shapes')">
@@ -1447,7 +1461,7 @@
                 <button onclick="goHome()" id="backToHomeBtn10">🏠 မူလနေရာသို့</button>
             </div>
         </div>
-        <div id="shapesQuiz" class="hidden quiz-area">
+        <div id="shapesQuiz" class="hidden quiz-area reveal">
             <h2 id="shapeQuizTitle">ဒီပုံလေးကဘာပုံလဲ ကလေးတို့ရေ။</h2>
             <div class="quiz-progress" id="shapeQuizProgress">မေးခွန်း ၁ မှ ၁၀</div>
             <div class="progress-bar">
@@ -1457,7 +1471,7 @@
                 style="width: 200px; height: 200px; object-fit: contain; display: block; margin: 0 auto;">
             <div class="quiz-options" id="shape-options" style="text-align: center; margin: 20px 0;"></div>
         </div>
-        <div class="quiz-navigation-bottom hidden" id="shapesQuizNavigation">
+        <div class="quiz-navigation-bottom hidden reveal" id="shapesQuizNavigation">
             <button onclick="showSection('shapes')" id="backToLearningBtn3"> သင်ခန်းစာသို့</button>
             <button id="shapePrevBtn" class="prev-btn" onclick="previousShapeQuestion()" style="display: none;"
                 id="prevShapeBtnText">← ရှေ့သို့</button>
@@ -1465,15 +1479,15 @@
                 →</button>
             <button onclick="goHome()" id="backToHomeBtn11">🏠 မူလနေရာသို့</button>
         </div>
-        <div id="shapeQuizResult" class="quiz-result">
+        <div id="shapeQuizResult" class="quiz-result reveal">
             <p id="shapeResultText"></p>
             <div id="shapeAnswerReview" class="answer-review"></div>
             <button onclick="goHome()" id="backToHomeBtn12">🏠 မူလနေရာသို့</button>
         </div>
     </section>
     <!-- Patterns Section -->
-    <section id="patterns" class="hidden">
-        <div id="patternsLearning" class="lesson-section">
+    <section id="patterns" class="hidden reveal">
+        <div id="patternsLearning" class="lesson-section reveal">
             <p id="patternsLearnText"> ကလေးတို့ရေ Pattern လေးတွေကိုလေ့လာကြရအောင်။</p>
             <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
                 <div class="card" style="height: auto; padding: 15px;">
@@ -1532,7 +1546,7 @@
                 <button onclick="goHome()" id="backToHomeBtn13">🏠 မူလနေရာသို့</button>
             </div>
         </div>
-        <div id="patternsQuiz" class="hidden quiz-area">
+        <div id="patternsQuiz" class="hidden quiz-area reveal">
             <h2 id="patternQuizTitle">🎨 Pattern လေးတွေကိုဖြေကြည့်ကြမယ်။</h2>
             <div class="quiz-progress" id="patternQuizProgress">မေးခွန်း ၁ မှ ၁၀</div>
             <div class="progress-bar">
@@ -1541,7 +1555,7 @@
             <p id="pattern" style="font-size: 32px; font-weight: bold; text-align: center; margin: 20px 0;"></p>
             <div class="quiz-options" id="pattern-options"></div>
         </div>
-        <div class="quiz-navigation-bottom hidden" id="patternsQuizNavigation">
+        <div class="quiz-navigation-bottom hidden reveal" id="patternsQuizNavigation">
             <button onclick="showSection('patterns')" id="backToLearningBtn4"> သင်ခန်းစာသို့</button>
             <button id="patternPrevBtn" class="prev-btn" onclick="previousPatternQuestion()" style="display: none;"
                 id="prevPatternBtnText">← ရှေ့သို့</button>
@@ -1549,15 +1563,15 @@
                 id="nextPatternBtnText">နောက်သို့ →</button>
             <button onclick="goHome()" id="backToHomeBtn14">🏠 မူလနေရာသို့</button>
         </div>
-        <div id="patternQuizResult" class="quiz-result">
+        <div id="patternQuizResult" class="quiz-result reveal">
             <p id="patternResultText"></p>
             <div id="patternAnswerReview" class="answer-review"></div>
             <button onclick="goHome()" id="backToHomeBtn15">🏠 မူလနေရာသို့</button>
         </div>
     </section>
     <!-- Time Section -->
-    <section id="time" class="hidden">
-        <div id="timeLearning" class="lesson-section">
+    <section id="time" class="hidden reveal">
+        <div id="timeLearning" class="lesson-section reveal">
             <p id="timeLearnText">ကလေးတို့ရေ နာရီတွေကိုဖတ်တတ်ဖို့ လေ့ကျင့်ကြရအောင်။</p>
             <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
                 <div class="card" style="height: auto; padding: 15px;">
@@ -1626,7 +1640,7 @@
                 <button onclick="goHome()" id="backToHomeBtn16">🏠 မူလနေရာသို့</button>
             </div>
         </div>
-        <div id="timeQuiz" class="hidden quiz-area">
+        <div id="timeQuiz" class="hidden quiz-area reveal">
             <h2 id="timeQuizTitle">⏰ ဘယ်နှနာရီထိုးပီလဲ။?</h2>
             <div class="quiz-progress" id="timeQuizProgress">မေးခွန်း ၁ မှ ၁၀</div>
             <div class="progress-bar">
@@ -1635,7 +1649,7 @@
             <canvas id="clockCanvas" width="250" height="250"></canvas>
             <div class="quiz-options" id="time-options"></div>
         </div>
-        <div class="quiz-navigation-bottom hidden" id="timeQuizNavigation">
+        <div class="quiz-navigation-bottom hidden reveal" id="timeQuizNavigation">
             <button onclick="showSection('time')" id="backToLearningBtn5"> သင်ခန်းစာသို့</button>
             <button id="timePrevBtn" class="prev-btn" onclick="previousTimeQuestion()" style="display: none;"
                 id="prevTimeBtnText">← ရှေ့သို့</button>
@@ -1643,15 +1657,15 @@
                 →</button>
             <button onclick="goHome()" id="backToHomeBtn17">🏠 မူလနေရာသို့</button>
         </div>
-        <div id="timeQuizResult" class="quiz-result">
+        <div id="timeQuizResult" class="quiz-result reveal">
             <p id="timeResultText"></p>
             <div id="timeAnswerReview" class="answer-review"></div>
             <button onclick="goHome()" id="backToHomeBtn18">🏠 မူလနေရာသို့</button>
         </div>
     </section>
     <!-- Money Section -->
-    <section id="money" class="hidden">
-        <div id="moneyLearning" class="lesson-section">
+    <section id="money" class="hidden reveal">
+        <div id="moneyLearning" class="lesson-section reveal">
             <p id="moneyLearnText">မြန်မာငွေကျပ်များ ရေတွက်တတ်ဖို့ လေ့လာကြရအောင်။</p>
             <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
                 <div class="card money-card" style="height: auto; padding: 15px;">
@@ -1700,7 +1714,7 @@
                 <button onclick="goHome()" id="backToHomeBtn19">🏠 မူလနေရာသို့</button>
             </div>
         </div>
-        <div id="moneyQuiz" class="hidden quiz-area">
+        <div id="moneyQuiz" class="hidden quiz-area reveal">
             <h2 id="moneyQuizTitle">💰 ငွေစုစုပေါင်း ဘယ်လောက်လဲ?</h2>
             <div class="quiz-progress" id="moneyQuizProgress">မေးခွန်း ၁ မှ ၁၀</div>
             <div class="progress-bar">
@@ -1709,7 +1723,7 @@
             <div id="coinCard" class="money-quiz" style="margin: 20px; text-align: center;"></div>
             <div class="quiz-options" id="money-options"></div>
         </div>
-        <div class="quiz-navigation-bottom hidden" id="moneyQuizNavigation">
+        <div class="quiz-navigation-bottom hidden reveal" id="moneyQuizNavigation">
             <button onclick="showSection('money')" id="backToLearningBtn6"> သင်ခန်းစာသို့</button>
             <button id="moneyPrevBtn" class="prev-btn" onclick="previousMoneyQuestion()" style="display: none;"
                 id="prevMoneyBtnText">← ရှေ့သို့</button>
@@ -1717,14 +1731,14 @@
                 →</button>
             <button onclick="goHome()" id="backToHomeBtn20">🏠 မူလနေရာသို့</button>
         </div>
-        <div id="moneyQuizResult" class="quiz-result">
+        <div id="moneyQuizResult reveal" class="quiz-result">
             <p id="moneyResultText"></p>
             <div id="moneyAnswerReview" class="answer-review"></div>
             <button onclick="goHome()" id="backToHomeBtn21">🏠 မူလနေရာသို့</button>
         </div>
     </section>
     <!-- Results Section -->
-    <section id="results" class="hidden">
+    <section id="results" class="hidden reveal">
         <div class="results-section">
             <h2 id="resultsTitle">ဉာဏ်စမ်းရလဒ်များ</h2>
             <div id="resultsContent">
@@ -2969,6 +2983,22 @@
             // Initialize the slideshow with number 1
             updateSlide();
         };
+
+        const cards = document.querySelectorAll('.reveal');
+
+  const observerOptions = { threshold: 0.15 };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');  // show when in view
+      } else {
+        entry.target.classList.remove('active'); // hide when out of view
+      }
+    });
+  }, observerOptions);
+
+  cards.forEach(card => observer.observe(card));
     </script>
 </body>
 

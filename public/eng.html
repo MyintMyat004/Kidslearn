@@ -1706,6 +1706,21 @@
         gap: 18px;
       }
     }
+
+    /* ================= REVEAL ANIMATION ================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  visibility: hidden;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  visibility: visible;
+}
+
   </style>
 </head>
 
@@ -1736,41 +1751,41 @@
     <!-- <h1>English for Kids</h1> -->
     <h2 class="section-title" style="padding-bottom: 10px; margin-bottom: 30px;">Choose a Learning Activity</h2>
     <div class="tabs" role="tablist">
-      <button class="tab-btn" onclick="showSection('az')" role="tab" aria-selected="false" aria-controls="az">
+      <button class="tab-btn reveal" onclick="showSection('az')" role="tab" aria-selected="false" aria-controls="az">
         <span class="tab-icon">🔤</span>
         <span class="tab-text">A–Z</span>
       </button>
-      <button class="tab-btn" onclick="showSection('vocabulary')" role="tab" aria-selected="false"
+      <button class="tab-btn reveal" onclick="showSection('vocabulary')" role="tab" aria-selected="false"
         aria-controls="vocabulary">
         <span class="tab-icon">📚</span>
         <span class="tab-text">Vocab</span>
       </button>
-      <button class="tab-btn" onclick="showSection('sentences')" role="tab" aria-selected="false"
+      <button class="tab-btn reveal" onclick="showSection('sentences')" role="tab" aria-selected="false"
         aria-controls="sentences">
         <span class="tab-icon">✍️</span>
         <span class="tab-text">Sentences</span>
       </button>
-      <button class="tab-btn" onclick="showSection('opposites')" role="tab" aria-selected="false"
+      <button class="tab-btn reveal" onclick="showSection('opposites')" role="tab" aria-selected="false"
         aria-controls="opposites">
         <span class="tab-icon">🔄</span>
         <span class="tab-text">Opposites</span>
       </button>
-      <button class="tab-btn" onclick="showSection('sightwords')" role="tab" aria-selected="false"
+      <button class="tab-btn reveal" onclick="showSection('sightwords')" role="tab" aria-selected="false"
         aria-controls="sightwords">
         <span class="tab-icon">👀</span>
         <span class="tab-text">Sight Words</span>
       </button>
-      <button class="tab-btn" onclick="showSection('numbers-colors')" role="tab" aria-selected="false"
+      <button class="tab-btn reveal" onclick="showSection('numbers-colors')" role="tab" aria-selected="false"
         aria-controls="numbers-colors">
         <span class="tab-icon">🔢</span>
         <span class="tab-text">Numbers</span>
       </button>
-      <button class="tab-btn" onclick="showSection('daily-challenge')" role="tab" aria-selected="false"
+      <button class="tab-btn reveal" onclick="showSection('daily-challenge')" role="tab" aria-selected="false"
         aria-controls="daily-challenge">
         <span class="tab-icon">🌟</span>
         <span class="tab-text">Challenge</span>
       </button>
-      <button class="tab-btn" onclick="showSection('quiz')" role="tab" aria-selected="false" aria-controls="quiz">
+      <button class="tab-btn reveal" onclick="showSection('quiz')" role="tab" aria-selected="false" aria-controls="quiz">
         <span class="tab-icon">❓</span>
         <span class="tab-text">Quiz</span>
       </button>
@@ -3322,6 +3337,22 @@
 
     // Save state when page is closed
     window.addEventListener('beforeunload', saveState);
+
+    const cards = document.querySelectorAll('.reveal');
+
+  const observerOptions = { threshold: 0.15 };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');  // show when in view
+      } else {
+        entry.target.classList.remove('active'); // hide when out of view
+      }
+    });
+  }, observerOptions);
+
+  cards.forEach(card => observer.observe(card));
   </script>
 </body>
 

@@ -32,6 +32,7 @@
       font-family: 'Nunito', sans-serif;
       background: var(--bg);
       color: var(--text-main);
+      /* height: 300vh; */
     }
 
     /* ================= NAV ================= */
@@ -285,6 +286,21 @@
         gap: 18px;
       }
     }
+
+    /* ================= REVEAL ANIMATION ================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  visibility: hidden;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  visibility: visible;
+}
+
   </style>
 </head>
 
@@ -320,25 +336,25 @@
       </div>
 
       <section class="grid">
-        <a href="f.html" class="card">
+        <a href="f.html" class="card reveal" style="transition-delay: 0.1s;">
           <img src="home.jpg" alt="">
           <div class="title">မြန်မာ့ဗျည်းအက္ခရာများ</div>
           <div class="desc">ဗျည်းအက္ခရာတွေကို လွယ်လွယ်ကူကူ လေ့လာနိုင်ပါတယ်။</div>
         </a>
 
-        <a href="kk.html" class="card">
+        <a href="kk.html" class="card reveal" style="transition-delay: 0.2s;">
           <img src="home3.jpg" alt="">
           <div class="title">မြန်မာအသံထွက်</div>
           <div class="desc">အသံထွက်တွေကို မှန်ကန်စွာ လေ့လာနိုင်ပါတယ်။</div>
         </a>
 
-        <a href="c.html" class="card">
+        <a href="c.html" class="card reveal" style="transition-delay: 0.3s;">
           <img src="home2.jpg" alt="">
           <div class="title">မြန်မာစကားပုံ</div>
           <div class="desc">အဓိပ္ပါယ်ရှိတဲ့ စကားပုံများကို လေ့လာပါ။</div>
         </a>
 
-        <a href="may2.html" class="card">
+        <a href="may2.html" class="card reveal" style="transition-delay: 0.4s;">
           <img src="home4.jpg" alt="">
           <div class="title">မြန်မာ့ရိုးရာပုံပြင်</div>
           <div class="desc">ရိုးရာပုံပြင်တွေကို ဖတ်ရှုလေ့လာနိုင်ပါတယ်။</div>
@@ -350,6 +366,26 @@
       </div>
     </div>
   </main>
+
+ <script>
+  const cards = document.querySelectorAll('.reveal');
+
+  const observerOptions = { threshold: 0.15 };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');  // show when in view
+      } else {
+        entry.target.classList.remove('active'); // hide when out of view
+      }
+    });
+  }, observerOptions);
+
+  cards.forEach(card => observer.observe(card));
+</script>
+
+
 
 </body>
 
