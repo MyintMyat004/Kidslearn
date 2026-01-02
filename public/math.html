@@ -945,7 +945,7 @@
         </div>
         <ul class="site-nav__list">
             <li class="site-nav__item">
-                <a href="home.html" class="site-nav__link site-nav__link--active">ပင်မစာမျက်နှာ</a>
+                <a href="home.html" class="site-nav__link ">ပင်မစာမျက်နှာ</a>
             </li>
             <!-- <li class="site-nav__item">
                     <a href="home.html#lesson" class="site-nav__link ">သင်ခန်းစာများ</a>
@@ -970,7 +970,7 @@
                 <div class="card-info">
                     <h3>🔢 ဂဏန်းများ</h3>
                     <p>Numbers learning</p>
-                    <button onclick="showSection('numbers')">Start</button>
+                    <button onclick="showSection('numbers')">စတင်ပါ</button>
                 </div>
             </div>
 
@@ -980,7 +980,7 @@
                 <div class="card-info">
                     <h3>🧮 ပေါင်း • နုတ် • မြှောက် • စား</h3>
                     <p>Math operations</p>
-                    <button onclick="showSection('math-operations')">Start</button>
+                    <button onclick="showSection('math-operations')">စတင်ပါ</button>
                 </div>
             </div>
 
@@ -990,7 +990,7 @@
                 <div class="card-info">
                     <h3>🔺 ပုံသဏ္ဍာန်များ</h3>
                     <p>Shapes learning</p>
-                    <button onclick="showSection('shapes')">Start</button>
+                    <button onclick="showSection('shapes')">စတင်ပါ</button>
                 </div>
             </div>
 
@@ -1000,7 +1000,7 @@
                 <div class="card-info">
                     <h3>🎨 Pattern များ</h3>
                     <p>Patterns learning</p>
-                    <button onclick="showSection('patterns')">Start</button>
+                    <button onclick="showSection('patterns')">စတင်ပါ</button>
                 </div>
             </div>
 
@@ -1010,7 +1010,7 @@
                 <div class="card-info">
                     <h3>⏰ အချိန်</h3>
                     <p>Time learning</p>
-                    <button onclick="showSection('time')">Start</button>
+                    <button onclick="showSection('time')">စတင်ပါ</button>
                 </div>
             </div>
 
@@ -1020,7 +1020,7 @@
                 <div class="card-info">
                     <h3>💰 ငွေကြေး</h3>
                     <p>Money learning</p>
-                    <button onclick="showSection('money')">Start</button>
+                    <button onclick="showSection('money')">စတင်ပါ</button>
                 </div>
             </div>
         </div>
@@ -1731,7 +1731,7 @@
                 →</button>
             <button onclick="goHome()" id="backToHomeBtn20">🏠 မူလနေရာသို့</button>
         </div>
-        <div id="moneyQuizResult reveal" class="quiz-result">
+        <div id="moneyQuizResult" class="quiz-result reveal">
             <p id="moneyResultText"></p>
             <div id="moneyAnswerReview" class="answer-review"></div>
             <button onclick="goHome()" id="backToHomeBtn21">🏠 မူလနေရာသို့</button>
@@ -1762,48 +1762,54 @@
             numbers: {
                 currentQuestion: 0,
                 totalQuestions: 10,
-                answers: new Array(10).fill(null),
+                answers: new Array(10).fill("unanswered"),
+
                 questions: []
             },
             math: {
                 currentQuestion: 0,
                 totalQuestions: 10,
-                answers: new Array(10).fill(null),
+                answers: new Array(10).fill("unanswered"),
+
                 questions: []
             },
             shapes: {
                 currentQuestion: 0,
                 totalQuestions: 10,
-                answers: new Array(10).fill(null),
+                answers: new Array(10).fill("unanswered"),
+
                 questions: []
             },
             patterns: {
                 currentQuestion: 0,
                 totalQuestions: 10,
-                answers: new Array(10).fill(null),
+                answers: new Array(10).fill("unanswered"),
+
                 questions: []
             },
             time: {
                 currentQuestion: 0,
                 totalQuestions: 10,
-                answers: new Array(10).fill(null),
+                answers: new Array(10).fill("unanswered"),
+
                 questions: []
             },
             money: {
                 currentQuestion: 0,
                 totalQuestions: 10,
-                answers: new Array(10).fill(null),
+                answers: new Array(10).fill("unanswered"),
+
                 questions: []
             }
         };
         // Results storage
         const quizResults = {
-            numbers: null,
-            math: null,
-            shapes: null,
-            patterns: null,
-            time: null,
-            money: null
+            numbers: "unanswered",
+            math: "unanswered",
+            shapes: "unanswered",
+            patterns: "unanswered",
+            time: "unanswered",
+            money: "unanswered"
         };
         const shapes = [
             { name: "စက်ဝိုင်း", img: "circle.jpg" },
@@ -1892,14 +1898,14 @@
             // Reset quiz states
             Object.keys(quizStates).forEach(key => {
                 quizStates[key].currentQuestion = 0;
-                quizStates[key].answers = new Array(10).fill(null);
+                quizStates[key].answers = new Array(10).fill("unanswered");
                 quizStates[key].questions = [];
             });
         }
         function resetMathOperationsSection() {
             // Reset math operations quiz state
             quizStates.math.currentQuestion = 0;
-            quizStates.math.answers = new Array(10).fill(null);
+            quizStates.math.answers = new Array(10).fill("unanswered");
             quizStates.math.questions = [];
             // Reset UI elements
             document.getElementById('mathOperationsLearning').classList.remove('hidden');
@@ -2006,7 +2012,7 @@
             document.getElementById('numbersQuizNavigation').classList.remove('hidden');
             // Reset quiz state
             quizStates.numbers.currentQuestion = 0;
-            quizStates.numbers.answers = new Array(10).fill(null);
+            quizStates.numbers.answers = new Array(10).fill("unanswered");
             quizStates.numbers.questions = [];
             // Generate questions
             for (let i = 0; i < 10; i++) {
@@ -2168,7 +2174,7 @@
             document.getElementById('mathQuizTitle').innerText = titles[operation];
             // Reset quiz state
             quizStates.math.currentQuestion = 0;
-            quizStates.math.answers = new Array(10).fill(null);
+            quizStates.math.answers = new Array(10).fill("unanswered");
             quizStates.math.questions = [];
             // Generate questions for the specific operation
             for (let i = 0; i < 10; i++) {
@@ -2330,7 +2336,7 @@
             document.getElementById('shapesQuizNavigation').classList.remove('hidden');
             // Reset quiz state
             quizStates.shapes.currentQuestion = 0;
-            quizStates.shapes.answers = new Array(10).fill(null);
+            quizStates.shapes.answers = new Array(10).fill("unanswered");
             quizStates.shapes.questions = [];
             // Generate questions
             for (let i = 0; i < 10; i++) {
@@ -2462,7 +2468,7 @@
             document.getElementById('patternsQuizNavigation').classList.remove('hidden');
             // Reset quiz state
             quizStates.patterns.currentQuestion = 0;
-            quizStates.patterns.answers = new Array(10).fill(null);
+            quizStates.patterns.answers = new Array(10).fill("unanswered");
             quizStates.patterns.questions = [];
             // Generate questions
             const patterns = [
@@ -2614,7 +2620,7 @@
             document.getElementById('timeQuizNavigation').classList.remove('hidden');
             // Reset quiz state
             quizStates.time.currentQuestion = 0;
-            quizStates.time.answers = new Array(10).fill(null);
+            quizStates.time.answers = new Array(10).fill("unanswered");
             quizStates.time.questions = [];
             // Generate questions
             for (let i = 0; i < 10; i++) {
@@ -2800,7 +2806,7 @@
             document.getElementById('moneyQuizNavigation').classList.remove('hidden');
             // Reset quiz state
             quizStates.money.currentQuestion = 0;
-            quizStates.money.answers = new Array(10).fill(null);
+            quizStates.money.answers = new Array(10).fill("unanswered");
             quizStates.money.questions = [];
             // Generate questions
             for (let i = 0; i < 10; i++) {
@@ -2944,7 +2950,7 @@
             const resultsContent = document.getElementById('resultsContent');
             resultsContent.innerHTML = '';
             // Check if there are any results
-            const hasResults = Object.values(quizResults).some(result => result !== null);
+            const hasResults = Object.values(quizResults).some(result => result !== "unanswered");
             if (!hasResults) {
                 resultsContent.innerHTML = `<p class="no-results" id="noResultsText">ဉာဏ်စမ်းရလဒ်များ မရှိသေးပါ။ ဉာဏ်စမ်းများ ဖြေဆိုပြီးမှ သင့်ရလဒ်များကို ဤနေရာတွင် မြင်ရမည်ဖြစ်ပါသည်။</p>`;
                 return;

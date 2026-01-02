@@ -355,9 +355,10 @@
 
   <div class="grid" id="cardGrid"></div>
 
-  <!-- <div class="back-btn-wrap">
-    <button class="back-btn" onclick="goNext()">ရှေ့သို့ ဆက်သွားမည်</button>
-  </div> -->
+ <div class="back-btn-wrap">
+        <button class="back-btn" onclick="goBack()">⬅️ နောက်သို့ ပြန်သွားမည်</button>
+      </div>
+
 
   <script>
     const pairs = [
@@ -411,7 +412,7 @@
     `;
       grid.appendChild(card);
     });
-    function goNext() {
+    function goBack() {
       window.location.href = "kk.html";
     }
 

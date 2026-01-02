@@ -145,18 +145,23 @@
     }
 
     .buttons button {
+      color: white;
+
       padding: 10px 10px;
       font-size: 10px;
       font-weight: bold;
       text-align: center;
       margin: 5px;
-      border: 3px solid tomato;
+      border: none;
+      /* border: 3px solid tomato; */
       border-radius: 12px;
       cursor: pointer;
-      background: tomato;
+      background-color: #6a98f1;
+      /* background: tomato; */
       transition: background 0.3s;
       width: 95px;
       height: 50px;
+      transition: ease-in 0.1s all;
     }
 
     .buttons button:hover {
@@ -391,7 +396,7 @@
     <svg class="lines" id="svg"></svg>
   </div>
   <div class="buttons">
-    <button onclick="gotonextpage()">back</button>
+    <button onclick="gotonextpage()">နောက်သို့</button>
     <button onclick="checkAll()">စစ်ဆေးမည်</button>
     <button onclick="resetGame()">ထပ်ကြိုးစားမယ်</button>
     

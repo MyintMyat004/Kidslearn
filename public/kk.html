@@ -94,17 +94,29 @@
     }
 
     button {
-      background-color: #ffb74d;
+      /* color: white;
+      background-color: #6a98f1;
       border: none;
-      padding: 10px 15px;
-      border-radius: 50%;
+      padding: 8px 18px;
+      border-radius: 30px;
       font-size: 1.2em;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease; */
+      border: none;
+      background: #6a98f1;
+    color: #fff;
+    text-decoration: none;
+    padding: 14px 38px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: transform .2s ease, opacity .2s ease;
     }
 
     button:hover {
-      background-color: #ffa726;
+      /* background-color: #ffa726; */
+      opacity: 0.8;
     }
 
     @keyframes fadeIn {
@@ -134,13 +146,15 @@
 
     .title-box {
       position: absolute;
-      bottom: 1px;
+      bottom: 15px;
       left: 50%;
       transform: translateX(-50%);
       border-radius: 12px;
       padding: 10px;
       font-size: 15px;
       font-weight: bold;
+      /* margin-top: -10px; */
+      cursor: pointer;
     }
 
     .cartoon-button {
@@ -399,6 +413,14 @@
         gap: 18px;
       }
     }
+     .btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;       /* button ကြားအကွာ */
+  margin: 20px 0; /* အပေါ်အောက် spacing */
+  
+}
   </style>
 
 </head>
@@ -428,7 +450,9 @@
   </header>
 
   <header class="myanmar_header">📚 မြန်မာအသံထွက် (သံတူ၊ ဗျည်း/သရ ၊စာလုံး‌ပေါင်း)</header>
-
+ <div class="btn-container">
+  <button onclick="goBack()">⬅️ နောက်သို့ ပြန်သွားမည်</button>
+</div>
   <div class="tabs">
     <div class="sticker">
       <img src="Thaya(2).png" alt="သံတူ">
@@ -528,7 +552,9 @@
     function goToAyaayPage() {
       window.location.href = "Ayaay1.html";
     }
-
+function goBack() {
+    window.location.href = "b.html";
+  }
     function goNext() {
       window.location.href = "b.html";
     }

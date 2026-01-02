@@ -227,17 +227,19 @@
     }
 
     .btn-container button {
+      color: white;
       padding: 10px 20px;
       font-size: 18px;
       border: none;
       border-radius: 12px;
       cursor: pointer;
-      background: #ffcc80;
+      background: #6a98f1;
       transition: background 0.2s;
     }
 
     .btn-container button:hover {
-      background: #ffa726;
+      /* background: #ffa726; */
+      opacity: 0.8;
     }
 
     /* --- Modal --- */
@@ -311,12 +313,13 @@
       border: none;
       border-radius: 12px;
       cursor: pointer;
-      background: #ffcc80;
+      background: #6a98f1;
       transition: background 0.2s;
     }
 
     .btn-container button:hover {
-      background: #ffa726;
+      /* background: #ffa726; */
+      opacity: 0.8;
     }
 
     /* --- Modal --- */
@@ -449,6 +452,15 @@
         gap: 18px;
       }
     }
+  .btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;       /* button ကြားအကွာ */
+  margin: 20px 0;
+  padding-left: 250px; /* အပေါ်အောက် spacing */
+}
+
   </style>
 </head>
 
@@ -475,6 +487,7 @@
       </ul>
     </nav>
   </header>
+
   <!-- Page 1 -->
   <div id="page1" class="page active">
     <div class="cell">က</div>
@@ -512,7 +525,11 @@
       <div class="cell">ဠ</div>
       <div class="cell">အ</div>
     </div>
+    <div class="btn-container">
+  <button onclick="goBack()">နောက်သို့</button>
+</div>
   </div>
+
 
 
 
@@ -673,7 +690,9 @@
         nextBtn.style.cursor = 'pointer';
       }
     }
-
+ function goBack() {
+    window.location.href = "b.html";
+  }
     // showPage function မှာ call လုပ်မယ်
     function showPage(page) {
       document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));

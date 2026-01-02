@@ -332,7 +332,15 @@
         gap: 18px;
       }
     }
-    
+    .btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;       /* button ကြားအကွာ */
+  margin: 20px 0; /* အပေါ်အောက် spacing */
+  border-radius: 40px;
+}
+
   </style>
 </head>
 
@@ -528,16 +536,18 @@
 
     <!-- Back Button at Bottom -->
     <div class="back-btn-wrap">
-      <!-- <button class="back-btn" onclick="goBack()">⬅️ နောက်သို့ ပြန်သွားမည်</button> -->
+       <button class="back-btn" onclick="goBack()">⬅️ နောက်သို့ ပြန်သွားမည်</button>
       <button class="back-btn" onclick="goNext()">ရှေ့သို့ ဆက်သွားမည်</button>
     </div>
+
   </main>
 
   <!-- JavaScript -->
   <script>
     function goBack() {
       if (document.referrer !== "") {
-        window.history.back();
+         window.location.href = "kk.html";
+        // window.history.back();
       } else {
         window.location.href = "kk.html"; // fallback page
 

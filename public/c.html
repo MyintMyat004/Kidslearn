@@ -121,6 +121,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 30px;
+      margin-left: 30px;
       width: 100%;
       max-width: 1200px;
     }
@@ -139,9 +140,10 @@
 
     .envelope-wrapper {
       position: relative;
-      width: 100%;
+      width: 90%;
+      height: 90%;
       padding-top: 100%;
-      cursor: pointer;
+      /* cursor: pointer; */
       transition: transform 0.3s ease;
     }
 
@@ -217,6 +219,7 @@
     }
 
     .seal {
+      cursor: pointer;
       position: absolute;
       bottom: 12px;
       left: 50%;
@@ -242,7 +245,7 @@
       top: 80px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 25px;
+      font-size: 20px;
       font-weight: bold;
       color: #333;
       transition: opacity 0.5s ease;
@@ -278,7 +281,7 @@
       padding: 10px 25px;
       border: none;
       border-radius: 10px;
-      background-color: #ff6b6b;
+      background-color: #6a98f1;
       color: #fff;
       cursor: pointer;
       box-shadow: 3px 3px 0px #000;
@@ -286,7 +289,7 @@
     }
 
     #homePage {
-      background-color: #4CAF50;
+      background-color: #6a98f1;
     }
 
     #nextPage:hover,
@@ -383,11 +386,51 @@
         gap: 18px;
       }
     }
+    .navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 420px;
+  margin: 30px auto;
+  margin-bottom: 20px;
+}
+
+.nav-right {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-icon {
+  font-size: 28px;
+  background: #ff6b6b;
+  color: white;
+  padding: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #000;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.nav-icon:hover {
+  transform: scale(1.15);
+  background: #ff4757;
+}
+
+#homePage {
+  background: #6a98f1;
+}
+
+#homePage:hover {
+  /* background: #43a047; */
+  opacity: 0.8;
+}
+
   </style>
 </head>
 
 <body>
-  <header>
+  <header style="margin-bottom: 30px;">
     <nav class="site-nav">
       <div class="site-nav__logo">
         <i class="fas fa-leaf"></i>
@@ -413,14 +456,15 @@
 
 
   <!-- Navigation Buttons: Home ဘယ်, Prev/Next ညာ -->
-  <div class="navigation-buttons"
-    style="display:flex; justify-content:space-between; width:100%; max-width:400px; margin-top:25px; text-align: center;">
-    <!-- <button id="homePage">ပင်မစာမျက်နှာသို့🏠</button> -->
-    <div style="display:flex; gap:10px;">
-      <button id="prevPage">&#8592;</button>
-      <button id="nextPage">&#8594;</button>
-    </div>
+  <div class="navigation-buttons">
+  <i id="homePage" class="fas fa-home nav-icon"></i>
+
+  <div class="nav-right">
+    <i id="prevPage" class="fas fa-arrow-left nav-icon"></i>
+    <i id="nextPage" class="fas fa-arrow-right nav-icon"></i>
   </div>
+</div>
+
 
   <script>
     const envelopesData = [
@@ -517,6 +561,7 @@
     homeBtn.addEventListener("click", () => {
       window.location.href = "b.html";
     });
+    
   </script>
 </body>
 
